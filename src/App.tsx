@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { track } from '@vercel/analytics';
+import toriImage from './assets/tori.svg';
 
 // 1. 타입 정의
 interface UpgradeItem {
@@ -17,10 +18,10 @@ interface ClickParticle {
 
 // 2. 상점 데이터
 const UPGRADES: UpgradeItem[] = [
-  { id: 1, name: "🖱️ 자동 클릭커", cost: 10, cps: 1 },
-  { id: 2, name: "👩‍🍳 숙련된 제과사", cost: 100, cps: 10 },
-  { id: 3, name: "🏭 쿠키 공장", cost: 500, cps: 50 },
-  { id: 4, name: "🚀 우주 베이커리", cost: 2000, cps: 200 },
+  { id: 1, name: "🖱️ 자동 메이커", cost: 10, cps: 1 },
+  { id: 2, name: "🧑‍🌾 숙련된 메이커", cost: 100, cps: 10 },
+  { id: 3, name: "🏭 토리 공장", cost: 500, cps: 50 },
+  { id: 4, name: "🚀 우주 토리 메이커", cost: 2000, cps: 200 },
 ];
 
 function App() {
@@ -74,7 +75,7 @@ function App() {
       {/* 상단 스탯 영역 */}
       <div className="text-center mb-10 z-10">
         <h1 className="text-4xl font-bold mb-4 text-yellow-400 drop-shadow-md">
-          토리 메이커 🍪
+          토-오리 메이커
         </h1>
         <div className="bg-slate-800/80 backdrop-blur-md p-6 rounded-3xl shadow-2xl border border-slate-700 min-w-[300px]">
           <h2 className="text-5xl font-black mb-2 text-white">
@@ -92,7 +93,7 @@ function App() {
           onClick={handleManualClick}
           className="text-9xl transition-transform hover:scale-110 active:scale-90 select-none cursor-pointer drop-shadow-[0_0_35px_rgba(250,204,21,0.4)] z-20 relative"
         >
-          🍪
+          <img src={toriImage} alt="tori" className="w-48 h-48 object-contain" />
         </button>
       </div>
 
@@ -135,7 +136,7 @@ function App() {
                   </div>
                 </div>
                 <div className={`text-xl ${canBuy ? 'text-yellow-400' : 'text-slate-600'}`}>
-                  {item.cost.toLocaleString()} 🍪
+                  {item.cost.toLocaleString()} 🪶
                 </div>
               </button>
             );
