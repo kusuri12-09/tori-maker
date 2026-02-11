@@ -1,0 +1,23 @@
+# 기본적으로 모든 텍스트 파일은 줄 바꿈을 LF로 자동 변환하도록 설정
+* text=auto
+
+# 소스 코드 파일들은 명시적으로 LF(리눅스/맥 방식)로 고정
+*.ts text eol=lf
+*.tsx text eol=lf
+*.js text eol=lf
+*.jsx text eol=lf
+*.json text eol=lf
+*.css text eol=lf
+*.html text eol=lf
+
+# 이미지, 폰트 같은 바이너리 파일은 변환하지 않음
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg text
+*.ico binary
+
+# 언어 통계에서 제외할 파일들 (GitHub 등에서)
+node_modules/* linguist-vendored
+dist/* linguist-vendored
