@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { track } from '@vercel/analytics';
 
 interface UpgradeItem {
   id: number;
@@ -17,6 +18,22 @@ function App() {
   const [cookies, setCookies] = useState<number>(0);
   const [totalCps, setTotalCps] = useState<number>(0);
 
+  // 1. 수동 클릭 로직
+  const handleManualClick = () => {
+    setCookies(prev => prev + 1);
+    track('cookie_clicked'); // Vercel 분석 기록
+  };
+
+  // 2. 업그레이드 구매 로직
+  const buyUpgrade = (name: string, cost: number, cps: number) => {
+    if (cookies >= cost) {
+      track('upgrade_purchased', { item: name }); // 어떤 아이템인지 태그 포함 기록
+      setCookies(prev => prev - cost);
+      setTotalCps(prev => prev + cps);
+    }
+  };
+
+  // 3. 자동 생산 타이머
   useEffect(() => {
     const timer = setInterval(() => {
       setCookies((prev) => prev + totalCps / 10);
@@ -25,7 +42,6 @@ function App() {
   }, [totalCps]);
 
   return (
-    // bg-slate-900: 배경색, text-white: 글자색, min-h-screen: 화면 전체 높이
     <div className="min-h-screen bg-slate-900 text-white flex flex-col items-center p-10 font-sans">
       
       <div className="text-center mb-10">
@@ -36,9 +52,9 @@ function App() {
         </div>
       </div>
 
-      {/* 클릭 버튼: hover 효과와 active(눌렀을 때) 효과 추가 */}
+      {/* 메인 클릭 버튼 */}
       <button 
-        onClick={() => setCookies(prev => prev + 1)}
+        onClick={handleManualClick}
         className="text-9xl mb-12 transition-transform hover:scale-110 active:scale-95 drop-shadow-[0_0_20px_rgba(250,204,21,0.5)]"
       >
         🍪
@@ -52,14 +68,8 @@ function App() {
             return (
               <button 
                 key={item.id} 
-                onClick={() => {
-                  if (canBuy) {
-                    setCookies(prev => prev - item.cost);
-                    setTotalCps(prev => prev + item.cps);
-                  }
-                }}
+                onClick={() => buyUpgrade(item.name, item.cost, item.cps)}
                 disabled={!canBuy}
-                // 조건부 스타일링: 돈이 없으면 흐릿하게(opacity-50)
                 className={`flex justify-between items-center p-4 rounded-xl font-medium transition-all
                   ${canBuy 
                     ? 'bg-slate-700 hover:bg-slate-600 border-l-4 border-yellow-500' 
