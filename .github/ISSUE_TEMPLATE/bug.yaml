@@ -1,0 +1,36 @@
+name: "🐛 Bug Report"
+description: "문제를 발견하셨나요? 수정을 위해 상세히 알려주세요."
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        정확한 버그 수정을 위해 정보를 최대한 자세히 적어주세요.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: "버그 내용"
+      description: "어떤 현상이 발생하나요?"
+      placeholder: "예: 로그인 버튼을 눌러도 반응이 없습니다."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: "재현 방법"
+      description: "문제를 일으키는 단계를 설명해주세요."
+      placeholder: |
+        1. 페이지 접속
+        2. 'OO' 버튼 클릭
+        3. 결과 확인
+    validations:
+      required: true
+
+  - type: input
+    id: environment
+    attributes:
+      label: "환경 정보"
+      description: "OS, 브라우저 버전 등을 적어주세요."
+      placeholder: "macOS Sonoma, Chrome 120.x"

@@ -1,0 +1,19 @@
+name: "✨ Enhancement"
+description: "기존 기능의 성능 향상이나 코드 구조 개선"
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: current_status
+    attributes:
+      label: "현재 상황"
+      description: "개선이 필요한 현재 상태를 설명해주세요."
+    validations:
+      required: true
+      
+  - type: textarea
+    id: enhancement_details
+    attributes:
+      label: "개선 제안"
+      description: "어떻게 개선하면 좋을까요? (기대 효과 포함)"
+    validations:
+      required: true

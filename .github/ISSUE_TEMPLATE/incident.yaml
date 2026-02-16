@@ -1,0 +1,21 @@
+name: "🚨 Incident Report"
+description: "장애 상황을 보고하고 기록합니다."
+labels: ["incident", "priority: high"]
+body:
+  - type: input
+    id: occurrence_time
+    attributes:
+      label: "발생 시각"
+      placeholder: "YYYY-MM-DD HH:mm (KST)"
+  - type: textarea
+    id: impact
+    attributes:
+      label: "영향 범위"
+      description: "현재 서비스의 어떤 부분이 마비되었나요?"
+    validations:
+      required: true
+  - type: textarea
+    id: action_taken
+    attributes:
+      label: "조치 사항"
+      description: "현재까지 진행된 대응책이 있다면 적어주세요."
