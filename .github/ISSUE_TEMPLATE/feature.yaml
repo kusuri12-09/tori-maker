@@ -1,0 +1,19 @@
+name: "🚀 Feature Request"
+description: "새로운 아이디어가 있으신가요? 제안해 주세요!"
+labels: ["feature"]
+body:
+  - type: textarea
+    id: motivation
+    attributes:
+      label: "제안 배경"
+      description: "왜 이 기능이 필요한가요? 해결하고자 하는 문제가 무엇인가요?"
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "제안 내용"
+      description: "구상하신 기능에 대해 자세히 설명해주세요."
+    validations:
+      required: true

@@ -1,0 +1,19 @@
+name: "🛠 Chore"
+description: "빌드 설정, 패키지 관리, 단순 리팩토링 등의 유지보수 작업"
+labels: ["chore"]
+body:
+  - type: textarea
+    id: task
+    attributes:
+      label: "작업 내용"
+      description: "어떤 유지보수 작업을 수행하나요?"
+      placeholder: "예: 의존성 패키지 업데이트, CI 스크립트 수정"
+    validations:
+      required: true
+  - type: textarea
+    id: reason
+    attributes:
+      label: "변경 이유"
+      description: "이 작업이 왜 필요한가요?"
+    validations:
+      required: false

@@ -1,0 +1,19 @@
+name: "📝 Documentation"
+description: "문서 추가, 수정 및 보완 작업"
+labels: ["documentation"]
+body:
+  - type: input
+    id: doc_target
+    attributes:
+      label: "대상 문서"
+      description: "어떤 문서를 수정하시나요?"
+      placeholder: "예: README.md, API 가이드라인"
+    validations:
+      required: true
+  - type: textarea
+    id: change_details
+    attributes:
+      label: "수정 내용"
+      description: "문서에서 변경되거나 추가되는 내용을 요약해주세요."
+    validations:
+      required: true
